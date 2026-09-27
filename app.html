@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Dada Shop</title>
 
 <style>
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -18,6 +20,8 @@ background:#fff;
 color:#000;
 padding-bottom:75px;
 }
+
+/* HEADER */
 
 header{
 position:sticky;
@@ -45,6 +49,8 @@ font-size:15px;
 outline:none;
 }
 
+/* CATEGORIES */
+
 .categories{
 display:flex;
 gap:20px;
@@ -67,6 +73,8 @@ font-weight:bold;
 border-bottom:2px solid #000;
 }
 
+/* PRODUITS */
+
 .grille{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -87,6 +95,9 @@ width:100%;
 aspect-ratio:1 / 1.15;
 background:#f5f5f5;
 overflow:hidden;
+
+/* CONTOUR DE LA PHOTO */
+border:2px solid #000;
 }
 
 .image-produit img{
@@ -111,6 +122,8 @@ font-size:16px;
 font-weight:bold;
 }
 
+/* PAGES */
+
 .page{
 display:none;
 }
@@ -118,6 +131,8 @@ display:none;
 .page.active{
 display:block;
 }
+
+/* FICHE PRODUIT */
 
 .fiche{
 padding:16px;
@@ -134,6 +149,10 @@ margin-bottom:15px;
 .fiche-image{
 width:100%;
 background:#f5f5f5;
+
+/* CONTOUR DE LA PHOTO */
+border:2px solid #000;
+overflow:hidden;
 }
 
 .fiche-image img{
@@ -162,7 +181,10 @@ margin-bottom:8px;
 .description{
 font-size:15px;
 line-height:1.5;
+min-height:20px;
 }
+
+/* BOUTON PANIER */
 
 .ajouter{
 width:100%;
@@ -174,6 +196,13 @@ font-size:16px;
 margin-top:25px;
 cursor:pointer;
 }
+
+.ajouter:disabled{
+background:#999;
+cursor:not-allowed;
+}
+
+/* PANIER */
 
 .panier-page{
 padding:20px 16px;
@@ -196,6 +225,7 @@ margin-bottom:15px;
 width:90px;
 height:100px;
 object-fit:cover;
+border:2px solid #000;
 }
 
 .article-info{
@@ -212,15 +242,11 @@ margin-bottom:7px;
 font-weight:bold;
 }
 
-.quantite{
-margin-top:10px;
-}
-
-.quantite button{
-width:28px;
-height:28px;
-border:1px solid #ccc;
+.supprimer{
+margin-top:12px;
+border:1px solid #000;
 background:#fff;
+padding:7px 12px;
 cursor:pointer;
 }
 
@@ -236,6 +262,8 @@ margin-top:50px;
 color:#666;
 }
 
+/* PROFIL */
+
 .profil-page{
 padding:20px 16px;
 }
@@ -245,6 +273,8 @@ border-bottom:1px solid #ddd;
 padding:18px 0;
 font-size:16px;
 }
+
+/* NAVIGATION */
 
 .navigation{
 position:fixed;
@@ -281,16 +311,23 @@ stroke-width:1.8;
 stroke-linecap:round;
 stroke-linejoin:round;
 }
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- ACCUEIL -->
 
 <div id="accueil" class="page active">
 
 <header>
 
-<div class="logo">DADA SHOP</div>
+<div class="logo">
+DADA SHOP
+</div>
 
 <input
 type="text"
@@ -302,35 +339,50 @@ oninput="rechercher()"
 
 </header>
 
+
 <div class="categories">
 
-<button class="active" onclick="filtrer('Tout',this)">
+<button
+class="active"
+onclick="filtrer('Tout',this)">
 Tout
 </button>
 
-<button onclick="filtrer('Nouveautés',this)">
+<button
+onclick="filtrer('Nouveautés',this)">
 Nouveautés
 </button>
 
-<button onclick="filtrer('Sacs',this)">
+<button
+onclick="filtrer('Sacs',this)">
 Sacs
 </button>
 
-<button onclick="filtrer('Accessoires',this)">
+<button
+onclick="filtrer('Accessoires',this)">
 Accessoires
 </button>
 
-<button onclick="filtrer('Vêtements',this)">
+<button
+onclick="filtrer('Vêtements',this)">
 Vêtements
 </button>
 
-<button onclick="filtrer('Accessoires pour cheveux',this)">
+<button
+onclick="filtrer('Accessoires pour cheveux',this)">
 Accessoires pour cheveux
 </button>
 
 </div>
 
-<main class="grille" id="grille-produits">
+
+<main
+class="grille"
+id="grille-produits"
+>
+
+
+<!-- SAC À FRANGES -->
 
 <button
 class="produit"
@@ -350,9 +402,13 @@ alt="Sac à franges"
 
 <div class="infos">
 
-<h2>Sac à franges</h2>
+<h2>
+Sac à franges
+</h2>
 
-<p class="prix">20 €</p>
+<p class="prix">
+20 €
+</p>
 
 </div>
 
@@ -363,13 +419,23 @@ alt="Sac à franges"
 </div>
 
 
-<div id="produit-page" class="page">
+
+<!-- PAGE PRODUIT -->
+
+<div
+id="produit-page"
+class="page"
+>
 
 <div class="fiche">
 
-<button class="retour" onclick="afficherPage('accueil')">
+<button
+class="retour"
+onclick="afficherPage('accueil')"
+>
 ← Retour
 </button>
+
 
 <div class="fiche-image">
 
@@ -380,24 +446,29 @@ alt="Sac à franges"
 
 </div>
 
+
 <h1 class="fiche-nom">
 Sac à franges
 </h1>
+
 
 <p class="fiche-prix">
 20 €
 </p>
 
+
 <p class="description-titre">
 Description
 </p>
 
-<p class="description">
-Un sac à franges fait main, avec un style original
-et facile à porter au quotidien.
-</p>
+
+<!-- DESCRIPTION LAISSÉE VIDE POUR L'INSTANT -->
+
+<p class="description"></p>
+
 
 <button
+id="bouton-ajouter"
 class="ajouter"
 onclick="ajouterAuPanier()"
 >
@@ -409,7 +480,13 @@ Ajouter au panier
 </div>
 
 
-<div id="panier-page" class="page">
+
+<!-- PANIER -->
+
+<div
+id="panier-page"
+class="page"
+>
 
 <div class="panier-page">
 
@@ -424,7 +501,13 @@ Panier
 </div>
 
 
-<div id="profil-page" class="page">
+
+<!-- PROFIL -->
+
+<div
+id="profil-page"
+class="page"
+>
 
 <div class="profil-page">
 
@@ -449,111 +532,262 @@ Informations personnelles
 </div>
 
 
+
+<!-- NAVIGATION -->
+
 <nav class="navigation">
 
-<button onclick="afficherPage('accueil')">
+
+<button
+onclick="afficherPage('accueil')"
+>
 
 <svg viewBox="0 0 24 24">
-<path d="M3 10.5L12 3l9 7.5"></path>
-<path d="M5 9.5V21h14V9.5"></path>
+
+<path
+d="M3 10.5L12 3l9 7.5">
+</path>
+
+<path
+d="M5 9.5V21h14V9.5">
+</path>
+
 </svg>
 
-<span>Accueil</span>
+<span>
+Accueil
+</span>
 
 </button>
 
 
-<button onclick="afficherPage('panier-page')">
+
+<button
+onclick="afficherPage('panier-page')"
+>
 
 <svg viewBox="0 0 24 24">
-<path d="M5 8h14l-1 12H6L5 8z"></path>
-<path d="M9 8a3 3 0 0 1 6 0"></path>
+
+<path
+d="M5 8h14l-1 12H6L5 8z">
+</path>
+
+<path
+d="M9 8a3 3 0 0 1 6 0">
+</path>
+
 </svg>
 
-<span>Panier</span>
+<span>
+Panier
+</span>
 
 </button>
 
 
-<button onclick="afficherPage('profil-page')">
+
+<button
+onclick="afficherPage('profil-page')"
+>
 
 <svg viewBox="0 0 24 24">
-<circle cx="12" cy="8" r="3.5"></circle>
-<path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6"></path>
+
+<circle
+cx="12"
+cy="8"
+r="3.5">
+</circle>
+
+<path
+d="M5 21c.7-4 3-6 7-6s6.3 2 7 6">
+</path>
+
 </svg>
 
-<span>Profil</span>
+<span>
+Profil
+</span>
 
 </button>
 
 </nav>
 
 
+
 <script>
 
 let panier=[];
 
+
+/* AFFICHER UNE PAGE */
+
 function afficherPage(page){
 
-document.querySelectorAll('.page').forEach(function(p){
+document
+.querySelectorAll('.page')
+.forEach(function(p){
+
 p.classList.remove('active');
+
 });
 
-document.getElementById(page).classList.add('active');
+document
+.getElementById(page)
+.classList.add('active');
+
 
 if(page==="panier-page"){
+
 afficherPanier();
+
 }
+
+
+if(page==="produit-page"){
+
+mettreAJourBouton();
+
+}
+
 
 window.scrollTo(0,0);
+
 }
 
+
+
+/* OUVRIR LE PRODUIT */
+
 function ouvrirProduit(){
+
 afficherPage("produit-page");
+
 }
+
+
+
+/* AJOUTER AU PANIER */
 
 function ajouterAuPanier(){
 
-const produit=panier.find(
-item=>item.nom==="Sac à franges"
+/*
+Le sac est disponible en un seul exemplaire.
+On vérifie donc s'il est déjà dans le panier.
+*/
+
+const dejaDansPanier =
+panier.some(
+item => item.nom === "Sac à franges"
 );
 
-if(produit){
-produit.quantite++;
-}else{
+
+if(dejaDansPanier){
+
+return;
+
+}
+
+
+/* Ajout d'un seul exemplaire */
 
 panier.push({
+
 nom:"Sac à franges",
+
 prix:20,
+
 image:"sac_franges.jpg",
+
 quantite:1
+
 });
 
-}
+
+mettreAJourBouton();
+
+afficherPanier();
 
 afficherPage("panier-page");
+
 }
+
+
+
+/* BOUTON AJOUTER */
+
+function mettreAJourBouton(){
+
+const bouton =
+document.getElementById("bouton-ajouter");
+
+
+if(!bouton){
+
+return;
+
+}
+
+
+const dejaDansPanier =
+panier.some(
+item => item.nom === "Sac à franges"
+);
+
+
+if(dejaDansPanier){
+
+bouton.textContent =
+"Déjà dans le panier";
+
+bouton.disabled=true;
+
+}else{
+
+bouton.textContent =
+"Ajouter au panier";
+
+bouton.disabled=false;
+
+}
+
+}
+
+
+
+/* AFFICHER LE PANIER */
 
 function afficherPanier(){
 
-const contenu=document.getElementById("contenu-panier");
+const contenu =
+document.getElementById(
+"contenu-panier"
+);
+
 
 if(panier.length===0){
 
-contenu.innerHTML=
+contenu.innerHTML =
 '<p class="panier-vide">Ton panier est vide.</p>';
 
 return;
+
 }
 
+
 let total=0;
+
 let html="";
 
-panier.forEach(function(article,index){
 
-total+=article.prix*article.quantite;
+panier.forEach(
+function(article,index){
 
-html+=`
+total +=
+article.prix *
+article.quantite;
+
+
+html += `
 
 <div class="article-panier">
 
@@ -564,23 +798,24 @@ alt="${article.nom}"
 
 <div class="article-info">
 
-<h3>${article.nom}</h3>
+<h3>
+${article.nom}
+</h3>
 
-<p>${article.prix} €</p>
+<p>
+${article.prix} €
+</p>
 
-<div class="quantite">
+<p>
+Quantité : 1
+</p>
 
-<button onclick="modifierQuantite(${index},-1)">
-−
+<button
+class="supprimer"
+onclick="supprimerDuPanier(${index})"
+>
+Retirer du panier
 </button>
-
-<span>${article.quantite}</span>
-
-<button onclick="modifierQuantite(${index},1)">
-+
-</button>
-
-</div>
 
 </div>
 
@@ -590,7 +825,8 @@ alt="${article.nom}"
 
 });
 
-html+=`
+
+html += `
 
 <div class="total">
 Total : ${total} €
@@ -598,36 +834,53 @@ Total : ${total} €
 
 `;
 
+
 contenu.innerHTML=html;
+
 }
 
-function modifierQuantite(index,changement){
 
-panier[index].quantite+=changement;
 
-if(panier[index].quantite<=0){
+/* RETIRER DU PANIER */
+
+function supprimerDuPanier(index){
+
 panier.splice(index,1);
-}
 
 afficherPanier();
+
+mettreAJourBouton();
+
 }
+
+
+
+/* FILTRER LES CATÉGORIES */
 
 function filtrer(categorie,bouton){
 
 document
 .querySelectorAll('.categories button')
 .forEach(function(btn){
+
 btn.classList.remove('active');
+
 });
+
 
 bouton.classList.add('active');
 
-const produits=
+
+const produits =
 document.querySelectorAll('.produit');
 
-produits.forEach(function(produit){
 
-const categories=produit.dataset.category;
+produits.forEach(
+function(produit){
+
+const categories =
+produit.dataset.category;
+
 
 if(
 categorie==="Tout" ||
@@ -646,21 +899,30 @@ produit.style.display="none";
 
 }
 
+
+
+/* RECHERCHE */
+
 function rechercher(){
 
-const recherche=
+const recherche =
 document
 .getElementById("recherche")
 .value
 .toLowerCase();
 
-const produits=
+
+const produits =
 document.querySelectorAll('.produit');
 
-produits.forEach(function(produit){
 
-const nom=
-produit.dataset.name.toLowerCase();
+produits.forEach(
+function(produit){
+
+const nom =
+produit.dataset.name
+.toLowerCase();
+
 
 if(nom.includes(recherche)){
 
