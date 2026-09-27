@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
 <title>Boutique - Dada Shop</title>
+
 
 <style>
 
@@ -17,287 +24,365 @@ margin: 0;
 font-family: Arial, sans-serif;
 background: #ffffff;
 color: #000000;
-padding-bottom: 75px;
+padding-bottom: 70px;
 }
 
-/* HEADER */
+
+/* =========================
+HEADER
+========================= */
 
 header {
 background: #ffffff;
 position: sticky;
 top: 0;
-z-index: 10;
+z-index: 20;
 border-bottom: 1px solid #000000;
 }
 
+
 .top {
+height: 65px;
 display: flex;
 align-items: center;
 justify-content: space-between;
-padding: 18px 25px;
+padding: 0 18px;
 }
+
 
 .logo {
-font-size: 25px;
+font-size: 27px;
 font-weight: bold;
-letter-spacing: 2px;
+letter-spacing: 4px;
 }
 
-.icone {
-font-size: 25px;
-color: #000000;
+
+.coeur {
+font-size: 31px;
 }
 
-/* RECHERCHE */
+
+/* =========================
+RECHERCHE
+========================= */
 
 .recherche {
-padding: 0 18px 15px;
+padding: 0 12px 12px;
 }
 
-.recherche input {
+
+.recherche-box {
+height: 50px;
 width: 100%;
-padding: 14px 18px;
-border: 1px solid #000000;
-border-radius: 25px;
+border: 2px solid #000000;
+border-radius: 9px;
+display: flex;
+align-items: center;
+overflow: hidden;
+background: #ffffff;
+}
+
+
+.recherche input {
+flex: 1;
+height: 100%;
+border: none;
+outline: none;
+padding: 0 15px;
+font-size: 16px;
 background: #ffffff;
 color: #000000;
-font-size: 15px;
-outline: none;
 }
+
 
 .recherche input::placeholder {
 color: #555555;
 }
 
-/* CATEGORIES */
+
+.bouton-recherche {
+height: 100%;
+width: 55px;
+border: none;
+background: #000000;
+color: #ffffff;
+font-size: 23px;
+}
+
+
+/* =========================
+CATEGORIES
+========================= */
 
 .categories {
 display: flex;
-gap: 12px;
+gap: 28px;
 overflow-x: auto;
-padding: 5px 18px 18px;
+padding: 0 18px 10px;
 scrollbar-width: none;
 }
+
 
 .categories::-webkit-scrollbar {
 display: none;
 }
 
+
 .categorie {
-flex: 0 0 auto;
-background: #ffffff;
-color: #000000;
-border: 1px solid #000000;
-padding: 10px 18px;
-border-radius: 22px;
-font-size: 14px;
+flex-shrink: 0;
+font-size: 18px;
+font-weight: bold;
+color: #666666;
 white-space: nowrap;
+padding-bottom: 8px;
 }
+
 
 .categorie.active {
-background: #000000;
-color: #ffffff;
+color: #000000;
+border-bottom: 4px solid #000000;
 }
 
-/* GRANDE BANNIERE */
+
+/* =========================
+BANNIERE
+========================= */
 
 .banniere {
-margin: 15px;
-min-height: 230px;
-border-radius: 18px;
 background: #000000;
 color: #ffffff;
-display: flex;
-align-items: center;
-padding: 30px;
-overflow: hidden;
+margin: 12px 0 0;
+padding: 28px 20px;
 }
+
 
 .banniere h1 {
-font-size: 34px;
 margin: 0 0 10px;
+font-size: 29px;
 }
 
+
 .banniere p {
-font-size: 16px;
 margin: 0 0 20px;
+font-size: 16px;
 }
+
 
 .bouton {
 display: inline-block;
 background: #ffffff;
 color: #000000;
-padding: 12px 22px;
-border-radius: 25px;
 text-decoration: none;
+padding: 12px 22px;
 font-weight: bold;
+border-radius: 4px;
 }
 
-.bouton:hover {
-background: #000000;
-color: #ffffff;
-border: 1px solid #ffffff;
-}
 
-/* TITRES */
+/* =========================
+TITRE
+========================= */
 
 .section-titre {
-padding: 25px 18px 10px;
 display: flex;
 justify-content: space-between;
 align-items: center;
+padding: 20px 15px 12px;
 }
+
 
 .section-titre h2 {
 margin: 0;
-font-size: 24px;
+font-size: 25px;
 }
+
 
 .voir {
 font-size: 14px;
-color: #000000;
+font-weight: bold;
 }
 
-/* PRODUITS */
+
+/* =========================
+GRILLE PRODUITS
+2 COLONNES COLLEES
+========================= */
 
 .produits {
 display: grid;
-grid-template-columns: 1fr;
-gap: 20px;
-padding: 10px 15px 30px;
-max-width: 600px;
-margin: auto;
-}
-
-.produit {
-background: #ffffff;
-border: 1px solid #000000;
-border-radius: 14px;
-overflow: hidden;
+grid-template-columns: 1fr 1fr;
+gap: 0;
+padding: 0;
+margin: 0;
 width: 100%;
 }
 
-/* PHOTOS */
+
+.produit {
+width: 100%;
+margin: 0;
+padding: 0;
+background: #ffffff;
+border: 0;
+overflow: hidden;
+}
+
+
+/* =========================
+IMAGES
+========================= */
 
 .photo {
 width: 100%;
-height: 420px;
+background: #ffffff;
+margin: 0;
+padding: 0;
+overflow: hidden;
+display: block;
+}
+
+
+.photo img {
+width: 100%;
+height: auto;
+display: block;
+margin: 0;
+padding: 0;
+object-fit: contain;
+}
+
+
+.photo.vide {
+width: 100%;
+min-height: 220px;
 background: #ffffff;
 display: flex;
 align-items: center;
 justify-content: center;
-overflow: hidden;
-}
-
-.photo img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-display: block;
-}
-
-.photo.vide {
-color: #000000;
+color: #555555;
 font-size: 14px;
 }
 
-/* INFORMATIONS */
+
+/* =========================
+INFOS PRODUIT
+========================= */
 
 .infos {
-padding: 13px;
+padding: 10px 12px 18px;
 background: #ffffff;
 }
 
+
 .infos h3 {
-margin: 0 0 8px;
+margin: 0 0 7px;
 font-size: 16px;
+font-weight: bold;
 }
+
 
 .prix {
-font-weight: bold;
-font-size: 17px;
 margin: 0;
+font-size: 19px;
+font-weight: bold;
 }
+
 
 .details {
+margin: 6px 0 0;
 color: #555555;
 font-size: 13px;
-margin-top: 6px;
 }
 
-/* BARRE DU BAS */
+
+/* =========================
+BARRE DU BAS
+========================= */
 
 .navigation-bas {
 position: fixed;
 bottom: 0;
 left: 0;
 right: 0;
-height: 68px;
+height: 70px;
 background: #ffffff;
 border-top: 1px solid #000000;
 display: flex;
 justify-content: space-around;
 align-items: center;
-z-index: 20;
+z-index: 30;
 }
 
+
 .nav-item {
-text-align: center;
 text-decoration: none;
-color: #000000;
+color: #555555;
+text-align: center;
 font-size: 12px;
 }
 
+
 .nav-item span {
 display: block;
-font-size: 21px;
+font-size: 23px;
 margin-bottom: 3px;
 }
+
 
 .nav-item.active {
 color: #000000;
 font-weight: bold;
 }
 
-/* ORDINATEUR */
+
+/* =========================
+ORDINATEUR
+========================= */
 
 @media (min-width: 700px) {
 
 .produits {
-grid-template-columns: 1fr;
-max-width: 700px;
+max-width: 900px;
 margin: auto;
 }
 
 .banniere {
-max-width: 1200px;
-margin: 25px auto;
-min-height: 300px;
+max-width: 900px;
+margin: 20px auto;
 }
 
 .section-titre {
-max-width: 700px;
+max-width: 900px;
 margin: auto;
-}
-
-.photo {
-height: 500px;
 }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- HEADER -->
+
+<!-- =========================
+HEADER
+========================= -->
 
 <header>
 
+
 <div class="top">
-<div class="logo">DADA SHOP</div>
-<div class="icone">♡</div>
+
+<div class="logo">
+DADA SHOP
+</div>
+
+<div class="coeur">
+♡
+</div>
+
 </div>
 
 
@@ -305,10 +390,18 @@ height: 500px;
 
 <div class="recherche">
 
+<div class="recherche-box">
+
 <input
 type="search"
 placeholder="Rechercher un produit..."
 >
+
+<button class="bouton-recherche">
+🔍
+</button>
+
+</div>
 
 </div>
 
@@ -346,11 +439,11 @@ Accessoires pour cheveux
 </header>
 
 
-<!-- GRANDE BANNIERE -->
+<!-- =========================
+BANNIERE
+========================= -->
 
 <section class="banniere">
-
-<div>
 
 <h1>
 Bienvenue chez Dada Shop
@@ -360,16 +453,19 @@ Bienvenue chez Dada Shop
 Découvre nos créations et nos nouveautés.
 </p>
 
-<a href="#produits" class="bouton">
+<a
+href="#produits"
+class="bouton"
+>
 Découvrir
 </a>
-
-</div>
 
 </section>
 
 
-<!-- NOUVEAUTES -->
+<!-- =========================
+NOUVEAUTES
+========================= -->
 
 <div class="section-titre">
 
@@ -384,9 +480,14 @@ Voir tout →
 </div>
 
 
-<!-- PRODUITS -->
+<!-- =========================
+PRODUITS
+========================= -->
 
-<section class="produits" id="produits">
+<section
+class="produits"
+id="produits"
+>
 
 
 <!-- PRODUIT 1 -->
@@ -501,34 +602,76 @@ Nouveau produit
 
 </div>
 
+
 </section>
 
 
-<!-- BARRE DU BAS -->
+<!-- =========================
+NAVIGATION
+========================= -->
 
 <nav class="navigation-bas">
 
-<a class="nav-item" href="index.html">
-<span>⌂</span>
+
+<a
+class="nav-item"
+href="index.html"
+>
+
+<span>
+⌂
+</span>
+
 Accueil
+
 </a>
 
-<a class="nav-item active" href="boutique.html">
-<span>▦</span>
+
+<a
+class="nav-item active"
+href="boutique.html"
+>
+
+<span>
+▦
+</span>
+
 Boutique
+
 </a>
 
-<a class="nav-item" href="#">
-<span>♡</span>
+
+<a
+class="nav-item"
+href="#"
+>
+
+<span>
+♡
+</span>
+
 Favoris
+
 </a>
 
-<a class="nav-item" href="#">
-<span>🛍</span>
+
+<a
+class="nav-item"
+href="#"
+>
+
+<span>
+🛍
+</span>
+
 Panier
+
 </a>
+
 
 </nav>
 
+
 </body>
+
 </html>
