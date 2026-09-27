@@ -7,24 +7,32 @@
 <title>Dada Shop</title>
 
 <style>
+
+* {
+box-sizing: border-box;
+}
+
 body {
 margin: 0;
 font-family: Arial, sans-serif;
-background: #f8f5f0;
-color: #1f1f1f;
+background: #ffffff;
+color: #000000;
 }
+
+/* HEADER */
 
 header {
 background: #ffffff;
 padding: 25px 20px;
 text-align: center;
-border-bottom: 1px solid #e5ddd4;
+border-bottom: 1px solid #000000;
 }
 
 header h1 {
 margin: 0;
 font-size: 40px;
-letter-spacing: 2px;
+letter-spacing: 3px;
+font-weight: bold;
 }
 
 nav {
@@ -34,75 +42,184 @@ margin-top: 20px;
 nav a {
 margin: 0 12px;
 text-decoration: none;
-color: #1f1f1f;
+color: #000000;
 font-weight: bold;
 }
 
+nav a:hover {
+text-decoration: underline;
+}
+
+/* ACCUEIL */
+
 .accueil {
+min-height: 75vh;
+display: flex;
+align-items: center;
+justify-content: center;
 text-align: center;
-padding: 100px 20px;
-background: #eee7df;
+padding: 80px 20px;
+background: #000000;
+color: #ffffff;
+}
+
+.contenu {
+max-width: 700px;
 }
 
 .accueil h2 {
-font-size: 42px;
-margin-bottom: 15px;
+font-size: 48px;
+margin: 0 0 20px;
+letter-spacing: 1px;
 }
 
 .accueil p {
 font-size: 18px;
-max-width: 600px;
-margin: auto;
 line-height: 1.6;
+margin: 0 auto;
 }
+
+/* BOUTON */
 
 .bouton {
 display: inline-block;
-margin-top: 30px;
-padding: 15px 32px;
-background: #1f1f1f;
-color: #ffffff;
+margin-top: 35px;
+padding: 15px 35px;
+background: #ffffff;
+color: #000000;
 text-decoration: none;
+border: 2px solid #ffffff;
 border-radius: 30px;
 font-weight: bold;
+transition: 0.2s;
 }
 
 .bouton:hover {
-background: #b89f91;
+background: #000000;
+color: #ffffff;
 }
 
+/* PETITE SECTION */
+
+.presentation {
+background: #ffffff;
+color: #000000;
+text-align: center;
+padding: 70px 20px;
+}
+
+.presentation h2 {
+font-size: 30px;
+margin-bottom: 15px;
+}
+
+.presentation p {
+max-width: 600px;
+margin: auto;
+line-height: 1.6;
+font-size: 16px;
+}
+
+/* FOOTER */
+
 footer {
+background: #000000;
+color: #ffffff;
 text-align: center;
 padding: 25px;
-background: #ffffff;
-margin-top: 0;
-color: #555;
 }
+
+/* TELEPHONE */
+
+@media (max-width: 600px) {
+
+header h1 {
+font-size: 32px;
+}
+
+nav a {
+margin: 0 7px;
+font-size: 14px;
+}
+
+.accueil {
+min-height: 70vh;
+padding: 60px 20px;
+}
+
+.accueil h2 {
+font-size: 38px;
+}
+
+.accueil p {
+font-size: 16px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
-<h1>Dada Shop</h1>
+
+<h1>DADA SHOP</h1>
 
 <nav>
-<a href="#">Accueil</a>
-<a href="#">Boutique</a>
+<a href="index.html">Accueil</a>
+<a href="boutique.html">Boutique</a>
 <a href="#">À propos</a>
 <a href="#">Contact</a>
 </nav>
+
 </header>
 
+
+<!-- GRANDE SECTION D'ACCUEIL -->
+
 <section class="accueil">
-<h2>Bienvenue chez Dada Shop</h2>
+
+<div class="contenu">
+
+<h2>
+Bienvenue chez Dada Shop
+</h2>
 
 <p>
-Découvrez notre sélection de créations et de produits soigneusement choisis.
+Découvre nos créations et nos nouveautés,
+imaginées avec soin pour toi.
 </p>
 
-<a class="bouton" href="boutique.html">Découvrir la boutique</a>
+<a href="boutique.html" class="bouton">
+Découvrir la boutique
+</a>
+
+</div>
+
 </section>
+
+
+<!-- PRESENTATION -->
+
+<section class="presentation">
+
+<h2>
+Dada Shop
+</h2>
+
+<p>
+Découvre notre univers et nos créations.
+De nouveaux produits arrivent régulièrement
+dans la boutique.
+</p>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
 © 2026 Dada Shop
