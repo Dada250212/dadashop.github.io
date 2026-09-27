@@ -7,175 +7,429 @@
 <title>Boutique - Dada Shop</title>
 
 <style>
+* {
+box-sizing: border-box;
+}
+
 body {
 margin: 0;
 font-family: Arial, sans-serif;
 background: #f8f5f0;
 color: #1f1f1f;
+padding-bottom: 75px;
 }
 
+/* HEADER */
 header {
-background: #ffffff;
-padding: 25px 20px;
-text-align: center;
-border-bottom: 1px solid #e3dbd2;
+background: white;
+position: sticky;
+top: 0;
+z-index: 10;
+border-bottom: 1px solid #e5ddd4;
 }
 
-header h1 {
-margin: 0;
-font-size: 38px;
+.top {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 18px 25px;
+}
+
+.logo {
+font-size: 25px;
+font-weight: bold;
 letter-spacing: 2px;
 }
 
-nav {
-margin-top: 18px;
+.icone {
+font-size: 22px;
 }
 
-nav a {
-margin: 0 12px;
-text-decoration: none;
-color: #1f1f1f;
-font-weight: bold;
+/* RECHERCHE */
+.recherche {
+padding: 0 18px 15px;
 }
 
-.titre {
-text-align: center;
-padding: 60px 20px 30px;
+.recherche input {
+width: 100%;
+padding: 14px 18px;
+border: 1px solid #ddd4ca;
+border-radius: 25px;
+background: #f5f1ec;
+font-size: 15px;
+outline: none;
 }
 
-.titre h2 {
-font-size: 38px;
-margin-bottom: 10px;
+/* CATEGORIES */
+.categories {
+display: flex;
+gap: 12px;
+overflow-x: auto;
+padding: 5px 18px 18px;
+scrollbar-width: none;
 }
 
-.titre p {
-color: #6b625c;
-font-size: 17px;
+.categories::-webkit-scrollbar {
+display: none;
 }
 
-.produits {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-gap: 25px;
-max-width: 1100px;
-margin: 30px auto 80px;
-padding: 0 25px;
+.categorie {
+flex: 0 0 auto;
+background: #eee7df;
+padding: 10px 18px;
+border-radius: 22px;
+font-size: 14px;
+white-space: nowrap;
 }
 
-.produit {
-background: #ffffff;
-border-radius: 15px;
-padding: 20px;
-text-align: center;
-box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+.categorie.active {
+background: #1f1f1f;
+color: white;
 }
 
-.photo {
-height: 260px;
-background: #e9dfd6;
-border-radius: 12px;
+/* GRANDE BANNIERE */
+.banniere {
+margin: 15px;
+min-height: 230px;
+border-radius: 18px;
+background: #ded2c7;
 display: flex;
 align-items: center;
-justify-content: center;
-color: #756960;
-margin-bottom: 18px;
-}.photo img {
-width: 100%;
-height: 100%;
-object-fit: contain;
-border-radius: 12px;
+padding: 30px;
+overflow: hidden;
 }
 
-.produit h3 {
-margin: 10px 0;
-font-size: 20px;
+.banniere h1 {
+font-size: 34px;
+margin: 0 0 10px;
 }
 
-.prix {
-font-weight: bold;
-font-size: 18px;
-margin: 12px 0;
+.banniere p {
+font-size: 16px;
+margin: 0 0 20px;
 }
 
 .bouton {
 display: inline-block;
-padding: 11px 22px;
 background: #1f1f1f;
 color: white;
-text-decoration: none;
+padding: 12px 22px;
 border-radius: 25px;
+text-decoration: none;
+font-weight: bold;
 }
 
-footer {
+/* TITRES */
+.section-titre {
+padding: 25px 18px 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.section-titre h2 {
+margin: 0;
+font-size: 24px;
+}
+
+.voir {
+font-size: 14px;
+color: #756960;
+}
+
+/* PRODUITS */
+.produits {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 14px;
+padding: 10px 15px 30px;
+}
+
+.produit {
+background: white;
+border-radius: 14px;
+overflow: hidden;
+}
+
+.photo {
+width: 100%;
+height: 230px;
+background: #e9dfd6;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+
+.photo img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+display: block;
+}
+
+.photo.vide {
+color: #756960;
+font-size: 14px;
+}
+
+.infos {
+padding: 13px;
+}
+
+.infos h3 {
+margin: 0 0 8px;
+font-size: 16px;
+}
+
+.prix {
+font-weight: bold;
+font-size: 17px;
+margin: 0;
+}
+
+.details {
+color: #777;
+font-size: 13px;
+margin-top: 6px;
+}
+
+/* BARRE DU BAS */
+.navigation-bas {
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+height: 68px;
+background: white;
+border-top: 1px solid #e5ddd4;
+display: flex;
+justify-content: space-around;
+align-items: center;
+z-index: 20;
+}
+
+.nav-item {
 text-align: center;
-padding: 25px;
-background: #ffffff;
+text-decoration: none;
 color: #555;
+font-size: 12px;
+}
+
+.nav-item span {
+display: block;
+font-size: 21px;
+margin-bottom: 3px;
+}
+
+.nav-item.active {
+color: #1f1f1f;
+font-weight: bold;
+}
+
+/* ORDINATEUR */
+@media (min-width: 700px) {
+
+.produits {
+grid-template-columns: repeat(4, 1fr);
+max-width: 1200px;
+margin: auto;
+}
+
+.banniere {
+max-width: 1200px;
+margin: 25px auto;
+min-height: 300px;
+}
+
+.section-titre {
+max-width: 1200px;
+margin: auto;
+}
+
+.photo {
+height: 300px;
+}
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-<h1>Dada Shop</h1>
 
-<nav>
-<a href="index.html">Accueil</a>
-<a href="boutique.html">Boutique</a>
-<a href="#">À propos</a>
-<a href="#">Contact</a>
-</nav>
+<div class="top">
+<div class="logo">DADA SHOP</div>
+<div class="icone">♡</div>
+</div>
+
+<!-- RECHERCHE -->
+<div class="recherche">
+<input
+type="search"
+placeholder="Rechercher un produit..."
+>
+</div>
+
+<!-- CATEGORIES -->
+<div class="categories">
+<div class="categorie active">Tout</div>
+<div class="categorie">Nouveautés</div>
+<div class="categorie">Sacs</div>
+<div class="categorie">Accessoires</div>
+<div class="categorie">Vêtements</div>
+<div class="categorie">Chouchous</div>
+</div>
+
 </header>
 
-<section class="titre">
-<h2>Notre boutique</h2>
-<p>Découvrez nos produits et nos créations.</p>
-</section>
 
-<section class="produits">
+<!-- GRANDE BANNIERE -->
+<section class="banniere">
 
-<div class="produit">
-<div class="photo">
-<img src="Sac_franges.jpg" alt="Sac à franges">
+<div>
+<h1>Bienvenue chez Dada Shop</h1>
+
+<p>
+Découvre nos créations et nos nouveautés.
+</p>
+
+<a href="#produits" class="bouton">
+Découvrir
+</a>
 </div>
 
+</section>
+
+
+<!-- NOUVEAUTES -->
+<div class="section-titre">
+<h2>Nouveautés</h2>
+<span class="voir">Voir tout →</span>
+</div>
+
+
+<!-- PRODUITS -->
+<section class="produits" id="produits">
+
+<!-- PRODUIT 1 -->
+<div class="produit">
+
+<div class="photo">
+<img
+src="sac_franges.jpg"
+alt="Sac à franges"
+>
+</div>
+
+<div class="infos">
 <h3>Sac à franges</h3>
 
-<p class="prix">20 €</p>
+<p class="prix">
+20 €
+</p>
 
-<a class="bouton" href="#">Découvrir</a>
+<p class="details">
+Création faite main
+</p>
 </div>
 
+</div>
+
+
+<!-- PRODUIT 2 -->
 <div class="produit">
-<div class="photo">
+
+<div class="photo vide">
 Photo du produit
 </div>
 
-<h3>Produit 2</h3>
+<div class="infos">
+<h3>Produit</h3>
 
-<p class="prix">Prix à venir</p>
+<p class="prix">
+Prix à venir
+</p>
 
-<a class="bouton" href="#">Découvrir</a>
+<p class="details">
+Nouveau produit
+</p>
 </div>
 
+</div>
+
+
+<!-- PRODUIT 3 -->
 <div class="produit">
-<div class="photo">
+
+<div class="photo vide">
 Photo du produit
 </div>
 
-<h3>Produit 3</h3>
+<div class="infos">
+<h3>Produit</h3>
 
-<p class="prix">Prix à venir</p>
+<p class="prix">
+Prix à venir
+</p>
 
-<a class="bouton" href="#">Découvrir</a>
+<p class="details">
+Nouveau produit
+</p>
+</div>
+
+</div>
+
+
+<!-- PRODUIT 4 -->
+<div class="produit">
+
+<div class="photo vide">
+Photo du produit
+</div>
+
+<div class="infos">
+<h3>Produit</h3>
+
+<p class="prix">
+Prix à venir
+</p>
+
+<p class="details">
+Nouveau produit
+</p>
+</div>
+
 </div>
 
 </section>
 
-<footer>
-© 2026 Dada Shop
-</footer>
+
+<!-- BARRE DU BAS -->
+<nav class="navigation-bas">
+
+<a class="nav-item active" href="index.html">
+<span>⌂</span>
+Accueil
+</a>
+
+<a class="nav-item active" href="boutique.html">
+<span>▦</span>
+Boutique
+</a>
+
+<a class="nav-item" href="#">
+<span>♡</span>
+Favoris
+</a>
+
+<a class="nav-item" href="#">
+<span>🛍</span>
+Panier
+</a>
+
+</nav>
 
 </body>
 </html>
