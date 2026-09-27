@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Dada Shop</title>
 
 <style>
@@ -14,13 +13,12 @@ padding:0;
 }
 
 body{
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 background:#fff;
 color:#000;
 padding-bottom:75px;
 }
 
-/* HEADER */
 header{
 position:sticky;
 top:0;
@@ -47,7 +45,6 @@ font-size:15px;
 outline:none;
 }
 
-/* CATEGORIES */
 .categories{
 display:flex;
 gap:20px;
@@ -70,7 +67,6 @@ font-weight:bold;
 border-bottom:2px solid #000;
 }
 
-/* PRODUITS */
 .grille{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -115,7 +111,6 @@ font-size:16px;
 font-weight:bold;
 }
 
-/* PAGES */
 .page{
 display:none;
 }
@@ -124,7 +119,6 @@ display:none;
 display:block;
 }
 
-/* FICHE PRODUIT */
 .fiche{
 padding:16px;
 }
@@ -181,7 +175,6 @@ margin-top:25px;
 cursor:pointer;
 }
 
-/* PANIER */
 .panier-page{
 padding:20px 16px;
 }
@@ -243,7 +236,6 @@ margin-top:50px;
 color:#666;
 }
 
-/* PROFIL */
 .profil-page{
 padding:20px 16px;
 }
@@ -254,7 +246,6 @@ padding:18px 0;
 font-size:16px;
 }
 
-/* NAVIGATION */
 .navigation{
 position:fixed;
 bottom:0;
@@ -290,22 +281,15 @@ stroke-width:1.8;
 stroke-linecap:round;
 stroke-linejoin:round;
 }
-
-/* MESSAGE */
-.message{
-text-align:center;
-padding:35px 15px;
-color:#666;
-}
 </style>
 </head>
 
 <body>
 
-<!-- PAGE ACCUEIL -->
 <div id="accueil" class="page active">
 
 <header>
+
 <div class="logo">DADA SHOP</div>
 
 <input
@@ -315,31 +299,32 @@ id="recherche"
 placeholder="Rechercher un article..."
 oninput="rechercher()"
 >
+
 </header>
 
 <div class="categories">
 
-<button class="active" onclick="filtrer('Tout', this)">
+<button class="active" onclick="filtrer('Tout',this)">
 Tout
 </button>
 
-<button onclick="filtrer('Nouveautés', this)">
+<button onclick="filtrer('Nouveautés',this)">
 Nouveautés
 </button>
 
-<button onclick="filtrer('Sacs', this)">
+<button onclick="filtrer('Sacs',this)">
 Sacs
 </button>
 
-<button onclick="filtrer('Accessoires', this)">
+<button onclick="filtrer('Accessoires',this)">
 Accessoires
 </button>
 
-<button onclick="filtrer('Vêtements', this)">
+<button onclick="filtrer('Vêtements',this)">
 Vêtements
 </button>
 
-<button onclick="filtrer('Accessoires pour cheveux', this)">
+<button onclick="filtrer('Accessoires pour cheveux',this)">
 Accessoires pour cheveux
 </button>
 
@@ -347,7 +332,6 @@ Accessoires pour cheveux
 
 <main class="grille" id="grille-produits">
 
-<!-- SAC À FRANGES -->
 <button
 class="produit"
 data-category="Sacs Nouveautés"
@@ -356,19 +340,19 @@ onclick="ouvrirProduit()"
 >
 
 <div class="image-produit">
+
 <img
 src="sac_franges.jpg"
 alt="Sac à franges"
 >
+
 </div>
 
 <div class="infos">
 
 <h2>Sac à franges</h2>
 
-<p class="prix">
-20 €
-</p>
+<p class="prix">20 €</p>
 
 </div>
 
@@ -379,7 +363,6 @@ alt="Sac à franges"
 </div>
 
 
-<!-- PAGE PRODUIT -->
 <div id="produit-page" class="page">
 
 <div class="fiche">
@@ -426,7 +409,6 @@ Ajouter au panier
 </div>
 
 
-<!-- PAGE PANIER -->
 <div id="panier-page" class="page">
 
 <div class="panier-page">
@@ -442,7 +424,6 @@ Panier
 </div>
 
 
-<!-- PAGE PROFIL -->
 <div id="profil-page" class="page">
 
 <div class="profil-page">
@@ -468,7 +449,6 @@ Informations personnelles
 </div>
 
 
-<!-- NAVIGATION -->
 <nav class="navigation">
 
 <button onclick="afficherPage('accueil')">
@@ -511,10 +491,8 @@ Informations personnelles
 
 <script>
 
-let panier = [];
+let panier=[];
 
-
-/* AFFICHER UNE PAGE */
 function afficherPage(page){
 
 document.querySelectorAll('.page').forEach(function(p){
@@ -523,33 +501,25 @@ p.classList.remove('active');
 
 document.getElementById(page).classList.add('active');
 
-if(page === 'panier-page'){
+if(page==="panier-page"){
 afficherPanier();
 }
 
 window.scrollTo(0,0);
 }
 
-
-/* OUVRIR LE PRODUIT */
 function ouvrirProduit(){
-
-afficherPage('produit-page');
-
+afficherPage("produit-page");
 }
 
-
-/* AJOUTER AU PANIER */
 function ajouterAuPanier(){
 
-const produit = panier.find(
-item => item.nom === "Sac à franges"
+const produit=panier.find(
+item=>item.nom==="Sac à franges"
 );
 
 if(produit){
-
 produit.quantite++;
-
 }else{
 
 panier.push({
@@ -561,33 +531,29 @@ quantite:1
 
 }
 
-afficherPage('panier-page');
-
+afficherPage("panier-page");
 }
 
-
-/* AFFICHER LE PANIER */
 function afficherPanier(){
 
-const contenu = document.getElementById("contenu-panier");
+const contenu=document.getElementById("contenu-panier");
 
-if(panier.length === 0){
+if(panier.length===0){
 
-contenu.innerHTML =
+contenu.innerHTML=
 '<p class="panier-vide">Ton panier est vide.</p>';
 
 return;
-
 }
 
-let total = 0;
-let html = "";
+let total=0;
+let html="";
 
-panier.forEach(function(article, index){
+panier.forEach(function(article,index){
 
-total += article.prix * article.quantite;
+total+=article.prix*article.quantite;
 
-html += `
+html+=`
 
 <div class="article-panier">
 
@@ -604,15 +570,13 @@ alt="${article.nom}"
 
 <div class="quantite">
 
-<button onclick="modifierQuantite(${index}, -1)">
+<button onclick="modifierQuantite(${index},-1)">
 −
 </button>
 
-<span>
-${article.quantite}
-</span>
+<span>${article.quantite}</span>
 
-<button onclick="modifierQuantite(${index}, 1)">
+<button onclick="modifierQuantite(${index},1)">
 +
 </button>
 
@@ -626,35 +590,29 @@ ${article.quantite}
 
 });
 
-html += `
+html+=`
+
 <div class="total">
 Total : ${total} €
 </div>
+
 `;
 
-contenu.innerHTML = html;
-
+contenu.innerHTML=html;
 }
 
+function modifierQuantite(index,changement){
 
-/* MODIFIER QUANTITÉ */
-function modifierQuantite(index, changement){
+panier[index].quantite+=changement;
 
-panier[index].quantite += changement;
-
-if(panier[index].quantite <= 0){
-
+if(panier[index].quantite<=0){
 panier.splice(index,1);
-
 }
 
 afficherPanier();
-
 }
 
-
-/* FILTRER LES CATÉGORIES */
-function filtrer(categorie, bouton){
+function filtrer(categorie,bouton){
 
 document
 .querySelectorAll('.categories button')
@@ -664,24 +622,23 @@ btn.classList.remove('active');
 
 bouton.classList.add('active');
 
-const produits =
+const produits=
 document.querySelectorAll('.produit');
 
 produits.forEach(function(produit){
 
-const categories =
-produit.dataset.category;
+const categories=produit.dataset.category;
 
 if(
-categorie === "Tout" ||
+categorie==="Tout" ||
 categories.includes(categorie)
 ){
 
-produit.style.display = "";
+produit.style.display="";
 
 }else{
 
-produit.style.display = "none";
+produit.style.display="none";
 
 }
 
@@ -689,31 +646,29 @@ produit.style.display = "none";
 
 }
 
-
-/* RECHERCHE */
 function rechercher(){
 
-const recherche =
+const recherche=
 document
 .getElementById("recherche")
 .value
 .toLowerCase();
 
-const produits =
+const produits=
 document.querySelectorAll('.produit');
 
 produits.forEach(function(produit){
 
-const nom =
+const nom=
 produit.dataset.name.toLowerCase();
 
 if(nom.includes(recherche)){
 
-produit.style.display = "";
+produit.style.display="";
 
 }else{
 
-produit.style.display = "none";
+produit.style.display="none";
 
 }
 
