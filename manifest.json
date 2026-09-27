@@ -1,0 +1,9 @@
+
+{
+"name": "Dada Shop",
+"short_name": "Dada Shop",
+"start_url": "./app.html",
+"display": "standalone",
+"background_color": "#ffffff",
+"theme_color": "#ffffff"
+}
