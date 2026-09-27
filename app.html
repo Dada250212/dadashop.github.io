@@ -17,10 +17,17 @@ body {
 font-family: Arial, sans-serif;
 background: #fff;
 color: #000;
-padding-bottom: 82px;
+padding-bottom: 80px;
 }
 
-/* HAUT DE L'APPLICATION */
+button {
+font-family: inherit;
+}
+
+/* =========================
+HAUT DE L'ACCUEIL
+========================= */
+
 header {
 background: #fff;
 position: sticky;
@@ -33,7 +40,6 @@ border-bottom: 1px solid #ddd;
 height: 68px;
 display: flex;
 align-items: center;
-justify-content: space-between;
 padding: 0 18px;
 }
 
@@ -42,6 +48,8 @@ font-size: 27px;
 font-weight: 800;
 letter-spacing: 4px;
 }
+
+/* RECHERCHE */
 
 .recherche {
 padding: 0 15px 13px;
@@ -52,7 +60,6 @@ height: 46px;
 border: 1px solid #000;
 display: flex;
 align-items: center;
-background: #fff;
 }
 
 .recherche input {
@@ -70,10 +77,12 @@ height: 100%;
 border: none;
 background: #000;
 color: #fff;
-cursor: pointer;
 }
 
-/* CATEGORIES */
+/* =========================
+CATÉGORIES
+========================= */
+
 .categories {
 display: flex;
 overflow-x: auto;
@@ -94,7 +103,6 @@ font-size: 14px;
 font-weight: 600;
 color: #777;
 padding-bottom: 7px;
-cursor: pointer;
 }
 
 .categorie.active {
@@ -102,14 +110,16 @@ color: #000;
 border-bottom: 2px solid #000;
 }
 
-/* TITRE */
+/* =========================
+TITRE
+========================= */
+
 .titre {
-padding: 25px 15px 15px;
+padding: 25px 15px 18px;
 }
 
 .titre h1 {
 font-size: 28px;
-font-weight: 700;
 }
 
 .titre p {
@@ -118,7 +128,10 @@ color: #666;
 font-size: 14px;
 }
 
-/* PRODUITS */
+/* =========================
+PRODUITS
+========================= */
+
 .produits {
 display: grid;
 grid-template-columns: 1fr 1fr;
@@ -128,6 +141,8 @@ background: #ddd;
 
 .produit {
 background: #fff;
+border: none;
+text-align: left;
 cursor: pointer;
 }
 
@@ -145,36 +160,115 @@ object-fit: cover;
 display: block;
 }
 
-.sans-photo {
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-color: #777;
-font-size: 13px;
-}
-
 .infos {
-padding: 11px 10px 16px;
+padding: 12px 10px 18px;
 }
 
 .infos h2 {
 font-size: 15px;
-margin-bottom: 7px;
+font-weight: 600;
 }
 
-.prix {
-font-size: 16px;
+/* =========================
+FICHE PRODUIT
+========================= */
+
+#ficheProduit {
+display: none;
+background: #fff;
+min-height: calc(100vh - 80px);
+}
+
+.fiche-haut {
+height: 60px;
+display: flex;
+align-items: center;
+padding: 0 15px;
+border-bottom: 1px solid #ddd;
+}
+
+.retour {
+background: none;
+border: none;
+font-size: 28px;
+cursor: pointer;
+line-height: 1;
+}
+
+.fiche-image {
+width: 100%;
+background: #f7f7f7;
+}
+
+.fiche-image img {
+width: 100%;
+display: block;
+max-height: 650px;
+object-fit: contain;
+}
+
+.fiche-infos {
+padding: 22px 18px 35px;
+}
+
+.fiche-infos h1 {
+font-size: 26px;
+margin-bottom: 12px;
+}
+
+.fiche-prix {
+font-size: 23px;
 font-weight: bold;
+margin-bottom: 25px;
 }
 
-/* BARRE DU BAS */
+.fiche-description-titre {
+font-size: 17px;
+font-weight: bold;
+margin-bottom: 8px;
+}
+
+.fiche-description {
+color: #444;
+font-size: 15px;
+line-height: 1.6;
+}
+
+/* =========================
+PANIER / PROFIL
+========================= */
+
+.page {
+display: none;
+padding: 30px 20px;
+min-height: calc(100vh - 80px);
+}
+
+.page.active {
+display: block;
+}
+
+.page h1 {
+font-size: 28px;
+margin-bottom: 20px;
+}
+
+.message-vide {
+text-align: center;
+padding-top: 80px;
+color: #666;
+}
+
+/* =========================
+BARRE DU BAS
+========================= */
+
 .navigation {
 position: fixed;
 bottom: 0;
 left: 0;
 right: 0;
-height: 78px;
+height: 80px;
 background: #fff;
 border-top: 1px solid #ddd;
 display: flex;
@@ -190,18 +284,17 @@ color: #777;
 display: flex;
 flex-direction: column;
 align-items: center;
-justify-content: center;
 gap: 5px;
 font-size: 12px;
-cursor: pointer;
 min-width: 80px;
+cursor: pointer;
 }
 
 .nav-bouton svg {
 width: 25px;
 height: 25px;
-stroke: currentColor;
 fill: none;
+stroke: currentColor;
 stroke-width: 1.7;
 stroke-linecap: round;
 stroke-linejoin: round;
@@ -212,46 +305,16 @@ color: #000;
 font-weight: bold;
 }
 
-/* PAGES PANIER / PROFIL */
-.page {
-display: none;
-padding: 30px 20px;
-}
-
-.page.active {
-display: block;
-}
-
-.page h1 {
-font-size: 28px;
-margin-bottom: 15px;
-}
-
-.vide {
-text-align: center;
-padding: 70px 20px;
-color: #666;
-}
-
-.vide svg {
-width: 55px;
-height: 55px;
-stroke: #000;
-fill: none;
-stroke-width: 1.5;
-margin-bottom: 15px;
-}
-
 @media (min-width: 700px) {
 .produits {
 grid-template-columns: repeat(3, 1fr);
+max-width: 1000px;
+margin: auto;
 }
 
-.titre,
-.produits {
+.titre {
 max-width: 1000px;
-margin-left: auto;
-margin-right: auto;
+margin: auto;
 }
 }
 </style>
@@ -259,16 +322,21 @@ margin-right: auto;
 
 <body>
 
-<!-- ACCUEIL -->
+<!-- =========================
+ACCUEIL
+========================= -->
+
 <main id="accueil" class="page active">
 
 <header>
+
 <div class="top">
 <div class="nom">DADA SHOP</div>
 </div>
 
 <div class="recherche">
 <div class="recherche-box">
+
 <input
 type="search"
 id="recherche"
@@ -276,12 +344,12 @@ placeholder="Rechercher un produit..."
 >
 
 <button aria-label="Rechercher">
-<svg width="20" height="20" viewBox="0 0 24 24"
-fill="none" stroke="currentColor" stroke-width="2">
+<svg viewBox="0 0 24 24">
 <circle cx="11" cy="11" r="7"></circle>
 <line x1="16.5" y1="16.5" x2="22" y2="22"></line>
 </svg>
 </button>
+
 </div>
 </div>
 
@@ -312,6 +380,7 @@ Accessoires pour cheveux
 </button>
 
 </div>
+
 </header>
 
 
@@ -321,98 +390,135 @@ Accessoires pour cheveux
 </div>
 
 
+<!-- PRODUITS -->
+
 <section class="produits" id="listeProduits">
 
 <!-- SAC À FRANGES -->
-<article
+
+<button
 class="produit"
 data-category="Sacs Nouveautés"
 data-name="Sac à franges"
+onclick="ouvrirProduit()"
 >
 
 <div class="image-produit">
+
 <img
 src="sac_franges.jpg"
 alt="Sac à franges"
 >
+
 </div>
 
 <div class="infos">
 <h2>Sac à franges</h2>
-<p class="prix">20 €</p>
 </div>
 
-</article>
-
-
-<!-- PRODUIT À VENIR -->
-<article
-class="produit"
-data-category="Nouveautés"
-data-name="Produit"
->
-
-<div class="image-produit">
-<div class="sans-photo">
-Bientôt disponible
-</div>
-</div>
-
-<div class="infos">
-<h2>Nouveau produit</h2>
-<p class="prix">À venir</p>
-</div>
-
-</article>
+</button>
 
 </section>
 
 </main>
 
 
-<!-- PANIER -->
+<!-- =========================
+FICHE DU PRODUIT
+========================= -->
+
+<main id="ficheProduit">
+
+<div class="fiche-haut">
+
+<button
+class="retour"
+onclick="fermerProduit()"
+aria-label="Retour"
+>
+←
+</button>
+
+</div>
+
+
+<div class="fiche-image">
+
+<img
+src="sac_franges.jpg"
+alt="Sac à franges"
+>
+
+</div>
+
+
+<div class="fiche-infos">
+
+<h1>Sac à franges</h1>
+
+<!-- LE PRIX AVANT LA DESCRIPTION -->
+
+<p class="fiche-prix">
+20 €
+</p>
+
+
+<p class="fiche-description-titre">
+Description
+</p>
+
+<p class="fiche-description">
+Un sac à franges fait main, avec un style original et facile à porter.
+Sa forme et ses franges lui donnent une touche élégante et décontractée.
+</p>
+
+</div>
+
+</main>
+
+
+<!-- =========================
+PANIER
+========================= -->
+
 <main id="panier" class="page">
 
 <h1>Panier</h1>
 
-<div class="vide">
-
-<svg viewBox="0 0 24 24">
-<circle cx="9" cy="20" r="1"></circle>
-<circle cx="18" cy="20" r="1"></circle>
-<path d="M3 4h2l2.4 11.5a2 2 0 0 0 2 1.5h7.8a2 2 0 0 0 2-1.5L21 8H6"></path>
-</svg>
-
+<div class="message-vide">
 <p>Ton panier est vide.</p>
-
 </div>
 
 </main>
 
 
-<!-- PROFIL -->
+<!-- =========================
+PROFIL
+========================= -->
+
 <main id="profil" class="page">
 
 <h1>Profil</h1>
 
-<div class="vide">
-
-<svg viewBox="0 0 24 24">
-<circle cx="12" cy="8" r="4"></circle>
-<path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"></path>
-</svg>
-
+<div class="message-vide">
 <p>Ton espace personnel Dada Shop.</p>
-
 </div>
 
 </main>
 
 
-<!-- NAVIGATION DU BAS -->
+<!-- =========================
+NAVIGATION
+========================= -->
+
 <nav class="navigation">
 
-<button class="nav-bouton active" data-page="accueil">
+<!-- ACCUEIL -->
+
+<button
+class="nav-bouton active"
+data-page="accueil"
+>
 
 <svg viewBox="0 0 24 24">
 <path d="M3 10.5L12 3l9 7.5"></path>
@@ -424,7 +530,12 @@ Bientôt disponible
 </button>
 
 
-<button class="nav-bouton" data-page="panier">
+<!-- PANIER -->
+
+<button
+class="nav-bouton"
+data-page="panier"
+>
 
 <svg viewBox="0 0 24 24">
 <circle cx="9" cy="20" r="1"></circle>
@@ -437,7 +548,12 @@ Bientôt disponible
 </button>
 
 
-<button class="nav-bouton" data-page="profil">
+<!-- PROFIL -->
+
+<button
+class="nav-bouton"
+data-page="profil"
+>
 
 <svg viewBox="0 0 24 24">
 <circle cx="12" cy="8" r="4"></circle>
@@ -453,7 +569,9 @@ Bientôt disponible
 
 <script>
 
-/* NAVIGATION */
+/* =========================
+NAVIGATION
+========================= */
 
 const boutonsNavigation =
 document.querySelectorAll(".nav-bouton");
@@ -465,7 +583,12 @@ boutonsNavigation.forEach(function(bouton) {
 
 bouton.addEventListener("click", function() {
 
-const page = bouton.dataset.page;
+const page =
+bouton.dataset.page;
+
+document
+.getElementById("ficheProduit")
+.style.display = "none";
 
 pages.forEach(function(element) {
 element.classList.remove("active");
@@ -488,7 +611,69 @@ window.scrollTo(0, 0);
 });
 
 
-/* CATÉGORIES */
+/* =========================
+OUVRIR LE PRODUIT
+========================= */
+
+function ouvrirProduit() {
+
+document
+.getElementById("accueil")
+.classList.remove("active");
+
+document
+.getElementById("panier")
+.classList.remove("active");
+
+document
+.getElementById("profil")
+.classList.remove("active");
+
+document
+.getElementById("ficheProduit")
+.style.display = "block";
+
+document
+.querySelectorAll(".nav-bouton")
+.forEach(function(element) {
+element.classList.remove("active");
+});
+
+window.scrollTo(0, 0);
+}
+
+
+/* =========================
+FERMER LE PRODUIT
+========================= */
+
+function fermerProduit() {
+
+document
+.getElementById("ficheProduit")
+.style.display = "none";
+
+document
+.getElementById("accueil")
+.classList.add("active");
+
+document
+.querySelectorAll(".nav-bouton")
+.forEach(function(element) {
+element.classList.remove("active");
+});
+
+document
+.querySelector('[data-page="accueil"]')
+.classList.add("active");
+
+window.scrollTo(0, 0);
+}
+
+
+/* =========================
+CATÉGORIES
+========================= */
 
 const boutonsCategories =
 document.querySelectorAll(".categorie");
@@ -541,7 +726,9 @@ produit.style.display = "none";
 });
 
 
-/* RECHERCHE */
+/* =========================
+RECHERCHE
+========================= */
 
 const recherche =
 document.getElementById("recherche");
