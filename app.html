@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dada Shop</title>
 <link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#8CCFF2">
+<meta name="theme-color" content="#EAF7FF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -30,12 +30,19 @@ color:var(--texte);
 padding-bottom:85px;
 }
 
+/* EN-TÊTE */
+
 header{
 position:sticky;
 top:0;
 z-index:5;
 background:white;
-padding:16px 15px 8px;
+padding:0;
+}
+
+.zone-logo{
+background:#EAF7FF;
+padding:13px 15px 10px;
 }
 
 .logo{
@@ -44,8 +51,30 @@ font-size:43px;
 font-weight:600;
 letter-spacing:0;
 color:#173E70;
-margin-bottom:14px;
+margin:0;
 line-height:1.15;
+}
+
+.logo-trait{
+width:75%;
+max-width:250px;
+height:2px;
+margin:9px auto 0;
+background:linear-gradient(
+90deg,
+transparent,
+#8CCFF2,
+#55B5E8,
+#8CCFF2,
+transparent
+);
+border-radius:50%;
+box-shadow:0 2px 8px rgba(85,181,232,.22);
+}
+
+.zone-outils{
+background:#F7FCFF;
+padding:12px 15px 0;
 }
 
 .recherche-ligne{
@@ -67,9 +96,9 @@ stroke-width:2;
 flex:1;
 min-width:0;
 padding:13px 16px;
-border:1px solid var(--bleu);
+border:1px solid #D8F0FF;
 border-radius:25px;
-background:var(--clair);
+background:#FFFFFF;
 font-size:15px;
 outline:none;
 color:var(--texte);
@@ -79,8 +108,9 @@ color:var(--texte);
 display:flex;
 gap:8px;
 overflow-x:auto;
-padding:13px 12px;
+padding:13px 0;
 scrollbar-width:none;
+background:#F7FCFF;
 }
 
 .categories::-webkit-scrollbar{display:none}
@@ -90,7 +120,7 @@ border:0;
 border-radius:22px;
 padding:10px 15px;
 white-space:nowrap;
-background:var(--clair);
+background:#EAF7FF;
 color:var(--texte);
 font-size:13px;
 }
@@ -100,22 +130,82 @@ background:var(--fonce);
 color:white;
 }
 
-.page{display:none}
+/* PAGES ET ANIMATIONS */
+
+main{
+position:relative;
+overflow:hidden;
+}
+
+.page{
+display:none;
+width:100%;
+}
 
 .page.active{
 display:block;
-animation:arrive 200ms ease-out both;
 }
 
-@keyframes arrive{
-from{opacity:0;transform:translateY(10px)}
-to{opacity:1;transform:translateY(0)}
+.page.entre-droite{
+display:block;
+position:relative;
+z-index:2;
+animation:entreDroite 320ms cubic-bezier(.22,.75,.25,1) both;
 }
+
+.page.entre-gauche{
+display:block;
+position:relative;
+z-index:2;
+animation:entreGauche 320ms cubic-bezier(.22,.75,.25,1) both;
+}
+
+.page.sort-gauche{
+display:block;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+z-index:1;
+animation:sortGauche 320ms cubic-bezier(.22,.75,.25,1) both;
+}
+
+.page.sort-droite{
+display:block;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+z-index:1;
+animation:sortDroite 320ms cubic-bezier(.22,.75,.25,1) both;
+}
+
+@keyframes entreDroite{
+from{transform:translateX(100%)}
+to{transform:translateX(0)}
+}
+
+@keyframes entreGauche{
+from{transform:translateX(-100%)}
+to{transform:translateX(0)}
+}
+
+@keyframes sortGauche{
+from{transform:translateX(0)}
+to{transform:translateX(-100%)}
+}
+
+@keyframes sortDroite{
+from{transform:translateX(0)}
+to{transform:translateX(100%)}
+}
+
+/* ACCUEIL ET ARTICLES */
 
 .titre{
 font-size:21px;
 font-weight:bold;
-padding:10px 15px 14px;
+padding:15px 15px 14px;
 }
 
 .grille{
@@ -124,35 +214,34 @@ grid-template-columns:1fr 1fr;
 align-items:start;
 gap:8px;
 padding:0 10px;
+background:white;
 }
 
 .produit{
 min-width:0;
 cursor:pointer;
+background:white;
 }
 
 .image-produit{
 width:100%;
 height:auto;
-aspect-ratio:auto;
-object-fit:contain;
 display:block;
-border:1px solid var(--pale);
-border-radius:9px;
-background:var(--clair);
+object-fit:contain;
+border:1px solid #E7F3FA;
+border-radius:7px;
+background:white;
 }
 
 .nom{
 font-size:14px;
-margin:8px 3px 4px;
+margin:8px 3px 12px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
 }
 
-.prix{
-font-size:15px;
-font-weight:bold;
-color:var(--fonce);
-margin:0 3px 12px;
-}
+/* FICHE PRODUIT */
 
 .retour{
 border:0;
@@ -169,22 +258,31 @@ height:auto;
 max-height:440px;
 object-fit:contain;
 display:block;
-background:var(--clair);
+background:white;
 }
 
-.detail-contenu{padding:15px}
+.detail-contenu{
+padding:15px;
+}
 
 .detail-prix{
 font-size:24px;
 font-weight:bold;
 color:var(--fonce);
+margin:0 0 10px;
 }
 
-.detail-nom{font-size:21px}
+.detail-nom{
+font-size:25px;
+font-weight:bold;
+margin:0 0 12px;
+}
 
 .description{
 font-size:15px;
+line-height:1.5;
 color:var(--gris);
+margin:0;
 }
 
 .principal{
@@ -199,7 +297,11 @@ font-weight:bold;
 margin-top:20px;
 }
 
-.principal:disabled{background:#AABCC6}
+.principal:disabled{
+background:#AABCC6;
+}
+
+/* PANIER */
 
 .bloc{
 margin:12px 15px;
@@ -220,6 +322,7 @@ height:auto;
 max-height:110px;
 object-fit:contain;
 border-radius:9px;
+background:white;
 }
 
 .info{flex:1}
@@ -239,12 +342,16 @@ padding:55px 20px;
 color:var(--gris);
 }
 
+/* PROFIL */
+
 .profil-bloc{
 margin:12px 15px;
 padding:18px;
 border-radius:14px;
 background:var(--clair);
 }
+
+/* NAVIGATION DU BAS */
 
 nav{
 position:fixed;
@@ -279,7 +386,9 @@ fill:none;
 stroke-width:1.8;
 }
 
-.nav.active{color:var(--fonce)}
+.nav.active{
+color:var(--fonce);
+}
 
 button{cursor:pointer}
 button:active{transform:scale(.98)}
@@ -289,7 +398,12 @@ button:active{transform:scale(.98)}
 }
 
 @media(prefers-reduced-motion:reduce){
-.page.active{animation:none}
+.page.entre-droite,
+.page.entre-gauche,
+.page.sort-gauche,
+.page.sort-droite{
+animation:none;
+}
 }
 </style>
 </head>
@@ -297,22 +411,31 @@ button:active{transform:scale(.98)}
 <body>
 
 <header id="entete">
+
+<div class="zone-logo">
 <div class="logo">𝒟𝒶𝒹𝒶 𝒮𝒽𝑜𝓅</div>
+<div class="logo-trait"></div>
+</div>
+
+<div class="zone-outils">
 
 <div class="recherche-ligne">
+
 <svg class="loupe" viewBox="0 0 24 24">
 <circle cx="10.8" cy="10.8" r="7.3"></circle>
 <path d="m16.2 16.2 5 5"></path>
 </svg>
 
-<input class="recherche" id="recherche"
+<input class="recherche"
+id="recherche"
 type="search"
 placeholder="Rechercher un article..."
 oninput="rechercher()">
+
 </div>
-</header>
 
 <div class="categories" id="categories">
+
 <button class="categorie active"
 onclick="filtrer('Tout',this)">Tout</button>
 
@@ -329,11 +452,15 @@ onclick="filtrer('Vêtements',this)">Vêtements</button>
 onclick="filtrer('Accessoires pour cheveux',this)">
 Accessoires pour cheveux
 </button>
+
 </div>
+</div>
+</header>
 
 <main>
 
 <section class="page active" id="accueil">
+
 <div class="titre">Pour vous</div>
 
 <div class="grille">
@@ -348,7 +475,7 @@ src="sac_franges.jpg"
 alt="Sac à franges">
 
 <p class="nom">Sac à franges</p>
-<p class="prix">20 €</p>
+
 </article>
 
 </div>
@@ -356,6 +483,7 @@ alt="Sac à franges">
 <p class="vide" id="aucun" style="display:none">
 Aucun article trouvé.
 </p>
+
 </section>
 
 <section class="page" id="detail">
@@ -372,11 +500,13 @@ alt="Sac à franges">
 <div class="detail-contenu">
 
 <p class="detail-prix">20 €</p>
+
 <h2 class="detail-nom">Sac à franges</h2>
 
 <p class="description"></p>
 
-<button class="principal" id="ajout"
+<button class="principal"
+id="ajout"
 onclick="ajouter()">
 Ajouter au panier
 </button>
@@ -409,7 +539,8 @@ Ajouter au panier
 
 <nav>
 
-<button class="nav active" id="nav-accueil"
+<button class="nav active"
+id="nav-accueil"
 onclick="afficherPage('accueil')">
 
 <svg viewBox="0 0 24 24">
@@ -419,7 +550,8 @@ onclick="afficherPage('accueil')">
 Accueil
 </button>
 
-<button class="nav" id="nav-panier"
+<button class="nav"
+id="nav-panier"
 onclick="afficherPage('panier')">
 
 <svg viewBox="0 0 24 24">
@@ -431,7 +563,8 @@ onclick="afficherPage('panier')">
 Panier
 </button>
 
-<button class="nav" id="nav-profil"
+<button class="nav"
+id="nav-profil"
 onclick="afficherPage('profil')">
 
 <svg viewBox="0 0 24 24">
@@ -447,14 +580,39 @@ Profil
 <script>
 
 let panier=[];
+let pageActuelle='accueil';
+let transitionEnCours=false;
+
+const ordrePages={
+accueil:0,
+detail:1,
+panier:2,
+profil:3
+};
 
 function afficherPage(nom){
 
-document.querySelectorAll('.page').forEach(p=>{
-p.classList.remove('active');
-});
+if(nom===pageActuelle || transitionEnCours)return;
 
-document.getElementById(nom).classList.add('active');
+let anciennePage=document.getElementById(pageActuelle);
+let nouvellePage=document.getElementById(nom);
+
+let retour=ordrePages[nom]<ordrePages[pageActuelle];
+
+anciennePage.classList.remove('active');
+nouvellePage.classList.add('active');
+
+anciennePage.classList.add(
+retour?'sort-droite':'sort-gauche'
+);
+
+nouvellePage.classList.add(
+retour?'entre-gauche':'entre-droite'
+);
+
+transitionEnCours=true;
+
+pageActuelle=nom;
 
 document.querySelectorAll('.nav').forEach(b=>{
 b.classList.remove('active');
@@ -468,16 +626,33 @@ let accueil=nom==='accueil';
 document.getElementById('entete').style.display=
 accueil?'block':'none';
 
-document.getElementById('categories').style.display=
-accueil?'flex':'none';
-
 if(nom==='panier')afficherPanier();
+
+if(nom==='detail')majBouton();
+
+setTimeout(()=>{
+
+anciennePage.classList.remove(
+'sort-droite',
+'sort-gauche',
+'active'
+);
+
+nouvellePage.classList.remove(
+'entre-droite',
+'entre-gauche'
+);
+
+nouvellePage.classList.add('active');
+
+transitionEnCours=false;
+
+},340);
 
 }
 
 function ouvrirProduit(){
 afficherPage('detail');
-majBouton();
 }
 
 function ajouter(){
