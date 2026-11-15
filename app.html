@@ -1,830 +1,476 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
-<link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#ffffff">
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dada Shop</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#8CCFF2">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
 <style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
+:root{
+--clair:#EAF7FF;
+--pale:#D8F0FF;
+--bleu:#8CCFF2;
+--moyen:#55B5E8;
+--fonce:#247FAF;
+--texte:#18394D;
+--gris:#78909C;
 }
-
+*{box-sizing:border-box}
 body{
+margin:0;
 font-family:Arial,sans-serif;
-background:#fff;
-color:#000;
-padding-bottom:75px;
+background:white;
+color:var(--texte);
+padding-bottom:85px;
 }
-
 header{
 position:sticky;
 top:0;
-z-index:10;
-background:#fff;
-border-bottom:1px solid #ddd;
-padding:16px;
+z-index:5;
+background:white;
+padding:16px 15px 8px;
 }
-
 .logo{
-text-align:center;
-font-size:25px;
-font-weight:bold;
+font-size:27px;
+font-weight:800;
 letter-spacing:2px;
-margin-bottom:15px;
+color:var(--fonce);
+margin-bottom:14px;
 }
-
+.recherche-ligne{
+display:flex;
+align-items:center;
+gap:9px;
+}
+.loupe{
+width:21px;
+height:21px;
+flex-shrink:0;
+stroke:var(--fonce);
+fill:none;
+stroke-width:2;
+}
 .recherche{
-width:100%;
-padding:12px 15px;
-border:1px solid #ccc;
-border-radius:3px;
+flex:1;
+min-width:0;
+padding:13px 16px;
+border:1px solid var(--bleu);
+border-radius:25px;
+background:var(--clair);
 font-size:15px;
 outline:none;
+color:var(--texte);
 }
-
 .categories{
 display:flex;
-gap:20px;
+gap:8px;
 overflow-x:auto;
-padding:15px 16px;
-border-bottom:1px solid #eee;
+padding:13px 12px;
+scrollbar-width:none;
+}
+.categories::-webkit-scrollbar{display:none}
+.categorie{
+border:0;
+border-radius:22px;
+padding:10px 15px;
 white-space:nowrap;
+background:var(--clair);
+color:var(--texte);
+font-size:13px;
 }
-
-.categories button{
-background:none;
-border:none;
-font-size:14px;
-cursor:pointer;
-padding-bottom:5px;
+.categorie.active{
+background:var(--fonce);
+color:white;
 }
-
-.categories button.active{
+.page{display:none}
+.page.active{
+display:block;
+animation:arrive 200ms ease-out both;
+}
+@keyframes arrive{
+from{opacity:0;transform:translateY(10px)}
+to{opacity:1;transform:translateY(0)}
+}
+.titre{
+font-size:21px;
 font-weight:bold;
-border-bottom:2px solid #000;
+padding:10px 15px 14px;
 }
-
 .grille{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:12px;
-padding:14px;
+gap:8px;
+padding:0 10px;
 }
-
-.produit{
-border:none;
-background:#fff;
-text-align:left;
-cursor:pointer;
-color:#000;
-}
-
+.produit{min-width:0;cursor:pointer}
 .image-produit{
 width:100%;
-aspect-ratio:1 / 1.15;
-background:#f5f5f5;
-overflow:hidden;
-border:2px solid #000;
-}
-
-.image-produit img{
-width:100%;
-height:100%;
+aspect-ratio:1/1.15;
 object-fit:cover;
 display:block;
+border:1px solid var(--pale);
+border-radius:9px;
+background:var(--clair);
 }
-
-.infos{
-padding:9px 2px 12px;
+.nom{
+font-size:14px;
+margin:8px 3px 4px;
 }
-
-.infos h2{
-font-size:15px;
-font-weight:normal;
-}
-
 .prix{
-margin-top:6px;
-font-size:16px;
+font-size:15px;
 font-weight:bold;
+color:var(--fonce);
+margin:0 3px 12px;
 }
-
-.page{
-display:none;
-}
-
-.page.active{
-display:block;
-}
-
-.fiche{
-padding:16px;
-}
-
 .retour{
-border:none;
-background:none;
-font-size:16px;
-cursor:pointer;
-margin-bottom:15px;
+border:0;
+background:var(--clair);
+color:var(--fonce);
+border-radius:22px;
+padding:11px 17px;
+margin:12px 15px;
 }
-
-.fiche-image{
+.detail-image{
 width:100%;
-background:#f5f5f5;
-border:2px solid #000;
-overflow:hidden;
+max-height:440px;
+object-fit:contain;
+background:var(--clair);
 }
-
-.fiche-image img{
-width:100%;
-display:block;
-}
-
-.fiche-nom{
-font-size:22px;
-margin-top:18px;
-}
-
-.fiche-prix{
-font-size:18px;
+.detail-contenu{padding:15px}
+.detail-prix{
+font-size:24px;
 font-weight:bold;
-margin-top:8px;
+color:var(--fonce);
 }
-
-.description-titre{
-font-size:16px;
-font-weight:bold;
-margin-top:25px;
-margin-bottom:8px;
-}
-
+.detail-nom{font-size:21px}
 .description{
 font-size:15px;
-line-height:1.5;
-min-height:20px;
+color:var(--gris);
 }
-
-.ajouter{
+.principal{
 width:100%;
-background:#000;
-color:#fff;
-border:none;
-padding:16px;
+padding:15px;
+border:0;
+border-radius:25px;
+background:var(--fonce);
+color:white;
 font-size:16px;
-margin-top:25px;
-cursor:pointer;
+font-weight:bold;
+margin-top:20px;
 }
-
-.ajouter:disabled{
-background:#999;
-cursor:not-allowed;
+.principal:disabled{background:#AABCC6}
+.bloc{
+margin:12px 15px;
+padding:17px;
+border-radius:14px;
+background:var(--clair);
 }
-
-.panier-page{
-padding:20px 16px;
-}
-
-.titre-page{
-font-size:25px;
-margin-bottom:20px;
-}
-
-.article-panier{
+.ligne{
 display:flex;
-gap:12px;
-border-bottom:1px solid #ddd;
-padding-bottom:15px;
-margin-bottom:15px;
+align-items:center;
+gap:13px;
 }
-
-.article-panier img{
-width:90px;
-height:100px;
+.image-panier{
+width:95px;
+height:105px;
 object-fit:cover;
-border:2px solid #000;
+border-radius:9px;
 }
-
-.article-info{
-flex:1;
-}
-
-.article-info h3{
-font-size:16px;
-font-weight:normal;
-margin-bottom:7px;
-}
-
-.article-info p{
-font-weight:bold;
-}
-
+.info{flex:1}
+.info p{margin:7px 0}
 .supprimer{
-margin-top:12px;
-border:1px solid #000;
-background:#fff;
-padding:7px 12px;
-cursor:pointer;
+border:0;
+background:var(--pale);
+color:var(--fonce);
+border-radius:18px;
+padding:9px 13px;
 }
-
-.total{
-font-size:20px;
-font-weight:bold;
-margin-top:25px;
-}
-
-.panier-vide{
+.vide{
 text-align:center;
-margin-top:50px;
-color:#666;
+padding:55px 20px;
+color:var(--gris);
 }
-
-.profil-page{
-padding:20px 16px;
-}
-
 .profil-bloc{
-border-bottom:1px solid #ddd;
-padding:18px 0;
-font-size:16px;
+margin:12px 15px;
+padding:18px;
+border-radius:14px;
+background:var(--clair);
 }
-
-.navigation{
+nav{
 position:fixed;
 bottom:0;
 left:0;
 right:0;
-height:68px;
-background:#fff;
-border-top:1px solid #ddd;
+z-index:10;
 display:flex;
 justify-content:space-around;
-align-items:center;
-z-index:20;
+background:white;
+border-top:1px solid var(--pale);
+padding:9px 5px calc(9px + env(safe-area-inset-bottom));
 }
-
-.navigation button{
-border:none;
-background:none;
-color:#000;
+.nav{
+border:0;
+background:transparent;
+color:var(--gris);
 display:flex;
 flex-direction:column;
 align-items:center;
 gap:4px;
-font-size:11px;
-cursor:pointer;
+font-size:12px;
+padding:5px 20px;
 }
-
-.navigation svg{
-width:24px;
-height:24px;
+.nav svg{
+width:23px;
+height:23px;
+stroke:currentColor;
 fill:none;
-stroke:#000;
 stroke-width:1.8;
-stroke-linecap:round;
-stroke-linejoin:round;
 }
-
+.nav.active{color:var(--fonce)}
+button{cursor:pointer}
+button:active{transform:scale(.98)}
+@media(prefers-reduced-motion:reduce){
+.page.active{animation:none}
+}
 </style>
 </head>
 
 <body>
 
-<div id="accueil" class="page active">
-
-<header>
-
-<div class="logo">
-DADA SHOP
-</div>
-
-<input
-type="text"
-class="recherche"
-id="recherche"
+<header id="entete">
+<div class="logo">DADA SHOP</div>
+<div class="recherche-ligne">
+<svg class="loupe" viewBox="0 0 24 24">
+<circle cx="10.8" cy="10.8" r="7.3"></circle>
+<path d="m16.2 16.2 5 5"></path>
+</svg>
+<input class="recherche" id="recherche"
+type="search"
 placeholder="Rechercher un article..."
-oninput="rechercher()"
->
-
+oninput="rechercher()">
+</div>
 </header>
 
-<div class="categories">
-
-<button
-class="active"
-onclick="filtrer('Tout',this)">
-Tout
-</button>
-
-<button
-onclick="filtrer('Nouveautés',this)">
-Nouveautés
-</button>
-
-<button
-onclick="filtrer('Sacs',this)">
-Sacs
-</button>
-
-<button
-onclick="filtrer('Accessoires',this)">
-Accessoires
-</button>
-
-<button
-onclick="filtrer('Vêtements',this)">
-Vêtements
-</button>
-
-<button
-onclick="filtrer('Accessoires pour cheveux',this)">
-Accessoires pour cheveux
-</button>
-
+<div class="categories" id="categories">
+<button class="categorie active" onclick="filtrer('Tout',this)">Tout</button>
+<button class="categorie" onclick="filtrer('Sacs',this)">Sacs</button>
+<button class="categorie" onclick="filtrer('Accessoires',this)">Accessoires</button>
+<button class="categorie" onclick="filtrer('Vêtements',this)">Vêtements</button>
+<button class="categorie" onclick="filtrer('Accessoires pour cheveux',this)">Accessoires pour cheveux</button>
 </div>
 
-<main
-class="grille"
-id="grille-produits"
->
+<main>
 
-<button
-class="produit"
-data-category="Sacs Nouveautés"
+<section class="page active" id="accueil">
+<div class="titre">Pour vous</div>
+<div class="grille">
+
+<article class="produit"
+data-category="Sacs"
 data-name="Sac à franges"
-onclick="ouvrirProduit()"
->
-
-<div class="image-produit">
-
-<img
+onclick="ouvrirProduit()">
+<img class="image-produit"
 src="sac_franges.jpg"
-alt="Sac à franges"
->
+alt="Sac à franges">
+<p class="nom">Sac à franges</p>
+<p class="prix">20 €</p>
+</article>
 
 </div>
-
-<div class="infos">
-
-<h2>
-Sac à franges
-</h2>
-
-<p class="prix">
-20 €
+<p class="vide" id="aucun" style="display:none">
+Aucun article trouvé.
 </p>
+</section>
 
-</div>
-
+<section class="page" id="detail">
+<button class="retour" onclick="afficherPage('accueil')">← Retour</button>
+<img class="detail-image"
+src="sac_franges.jpg"
+alt="Sac à franges">
+<div class="detail-contenu">
+<p class="detail-prix">20 €</p>
+<h2 class="detail-nom">Sac à franges</h2>
+<p class="description"></p>
+<button class="principal" id="ajout"
+onclick="ajouter()">
+Ajouter au panier
 </button>
+</div>
+</section>
+
+<section class="page" id="panier">
+<div class="titre">Mon panier</div>
+<div id="contenu-panier">
+<p class="vide">Ton panier est vide pour le moment.</p>
+</div>
+</section>
+
+<section class="page" id="profil">
+<div class="titre">Mon profil</div>
+<div class="profil-bloc">
+<strong>Informations personnelles</strong>
+<p>Retrouve ici les informations de ton compte.</p>
+</div>
+</section>
 
 </main>
 
-</div>
-
-<div
-id="produit-page"
-class="page"
->
-
-<div class="fiche">
-
-<button
-class="retour"
-onclick="afficherPage('accueil')"
->
-← Retour
-</button>
-
-<div class="fiche-image">
-
-<img
-src="sac_franges.jpg"
-alt="Sac à franges"
->
-
-</div>
-
-<h1 class="fiche-nom">
-Sac à franges
-</h1>
-
-<p class="fiche-prix">
-20 €
-</p>
-
-<p class="description-titre">
-Description
-</p>
-
-<p class="description"></p>
-
-<button
-id="bouton-ajouter"
-class="ajouter"
-onclick="ajouterAuPanier()"
->
-Ajouter au panier
-</button>
-
-</div>
-
-</div>
-
-<div
-id="panier-page"
-class="page"
->
-
-<div class="panier-page">
-
-<h1 class="titre-page">
-Panier
-</h1>
-
-<div id="contenu-panier"></div>
-
-</div>
-
-</div>
-
-<div
-id="profil-page"
-class="page"
->
-
-<div class="profil-page">
-
-<h1 class="titre-page">
-Profil
-</h1>
-
-<div class="profil-bloc">
-Se connecter
-</div>
-
-<div class="profil-bloc">
-Mes commandes
-</div>
-
-<div class="profil-bloc">
-Informations personnelles
-</div>
-
-</div>
-
-</div>
-
-<nav class="navigation">
-
-<button
-onclick="afficherPage('accueil')"
->
-
+<nav>
+<button class="nav active" id="nav-accueil"
+onclick="afficherPage('accueil')">
 <svg viewBox="0 0 24 24">
-
-<path d="M3 10.5L12 3l9 7.5"></path>
-
-<path d="M5 9.5V21h14V9.5"></path>
-
+<path d="M3 10.5 12 3l9 7.5M5.5 9.5V21h13V9.5"/>
 </svg>
-
-<span>
 Accueil
-</span>
-
 </button>
 
-<button
-onclick="afficherPage('panier-page')"
->
-
+<button class="nav" id="nav-panier"
+onclick="afficherPage('panier')">
 <svg viewBox="0 0 24 24">
-
-<path d="M5 8h14l-1 12H6L5 8z"></path>
-
-<path d="M9 8a3 3 0 0 1 6 0"></path>
-
+<path d="M3 4h2l2.2 12.5h11.5L21 8H6"/>
+<circle cx="9" cy="20" r="1"/>
+<circle cx="18" cy="20" r="1"/>
 </svg>
-
-<span>
 Panier
-</span>
-
 </button>
 
-<button
-onclick="afficherPage('profil-page')"
->
-
+<button class="nav" id="nav-profil"
+onclick="afficherPage('profil')">
 <svg viewBox="0 0 24 24">
-
-<circle
-cx="12"
-cy="8"
-r="3.5">
-</circle>
-
-<path
-d="M5 21c.7-4 3-6 7-6s6.3 2 7 6">
-</path>
-
+<circle cx="12" cy="8" r="4"/>
+<path d="M4 21c.5-4.5 3.5-7 8-7s7.5 2.5 8 7"/>
 </svg>
-
-<span>
 Profil
-</span>
-
 </button>
-
 </nav>
 
 <script>
-
 let panier=[];
 
-function afficherPage(page){
-
-document
-.querySelectorAll('.page')
-.forEach(function(p){
-
+function afficherPage(nom){
+document.querySelectorAll('.page').forEach(p=>{
 p.classList.remove('active');
+});
+document.getElementById(nom).classList.add('active');
 
+document.querySelectorAll('.nav').forEach(b=>{
+b.classList.remove('active');
 });
 
-document
-.getElementById(page)
-.classList.add('active');
+let nav=document.getElementById('nav-'+nom);
+if(nav)nav.classList.add('active');
 
-if(page==="panier-page"){
+let accueil=nom==='accueil';
+document.getElementById('entete').style.display=
+accueil?'block':'none';
+document.getElementById('categories').style.display=
+accueil?'flex':'none';
 
-afficherPanier();
-
-}
-
-if(page==="produit-page"){
-
-mettreAJourBouton();
-
-}
-
-window.scrollTo(0,0);
-
+if(nom==='panier')afficherPanier();
 }
 
 function ouvrirProduit(){
-
-afficherPage("produit-page");
-
+afficherPage('detail');
+majBouton();
 }
 
-function ajouterAuPanier(){
-
-const dejaDansPanier =
-panier.some(
-item => item.nom === "Sac à franges"
-);
-
-if(dejaDansPanier){
-
-return;
-
-}
-
+function ajouter(){
+if(panier.length===0){
 panier.push({
-
-nom:"Sac à franges",
-
+nom:'Sac à franges',
 prix:20,
-
-image:"sac_franges.jpg",
-
-quantite:1
-
+image:'sac_franges.jpg'
 });
-
-mettreAJourBouton();
-
+}
+majBouton();
+afficherPage('panier');
 afficherPanier();
-
-afficherPage("panier-page");
-
 }
 
-function mettreAJourBouton(){
-
-const bouton =
-document.getElementById("bouton-ajouter");
-
-if(!bouton){
-
-return;
-
-}
-
-const dejaDansPanier =
-panier.some(
-item => item.nom === "Sac à franges"
-);
-
-if(dejaDansPanier){
-
-bouton.textContent =
-"Déjà dans le panier";
-
-bouton.disabled=true;
-
-}else{
-
-bouton.textContent =
-"Ajouter au panier";
-
-bouton.disabled=false;
-
-}
-
+function majBouton(){
+let b=document.getElementById('ajout');
+b.disabled=panier.length>=1;
+b.textContent=panier.length>=1
+?'Article déjà dans le panier'
+:'Ajouter au panier';
 }
 
 function afficherPanier(){
-
-const contenu =
-document.getElementById(
-"contenu-panier"
-);
+let zone=document.getElementById('contenu-panier');
 
 if(panier.length===0){
-
-contenu.innerHTML =
-'<p class="panier-vide">Ton panier est vide.</p>';
-
+zone.innerHTML='<p class="vide">Ton panier est vide pour le moment.</p>';
 return;
-
 }
 
-let total=0;
-
-let html="";
-
-panier.forEach(
-function(article,index){
-
-total +=
-article.prix *
-article.quantite;
-
-html += `
-
-<div class="article-panier">
-
-<img
-src="${article.image}"
-alt="${article.nom}"
->
-
-<div class="article-info">
-
-<h3>
-${article.nom}
-</h3>
-
-<p>
-${article.prix} €
-</p>
-
-<p>
-Quantité : 1
-</p>
-
-<button
-class="supprimer"
-onclick="supprimerDuPanier(${index})"
->
-Retirer du panier
-</button>
-
+zone.innerHTML=`
+<div class="bloc">
+<div class="ligne">
+<img class="image-panier"
+src="sac_franges.jpg" alt="Sac à franges">
+<div class="info">
+<strong>Sac à franges</strong>
+<p>20 €</p>
+<p>Quantité : 1</p>
+<button class="supprimer"
+onclick="supprimer()">Supprimer</button>
 </div>
-
 </div>
-
+</div>
+<div class="bloc"><strong>Total : 20 €</strong></div>
 `;
-
-});
-
-html += `
-
-<div class="total">
-Total : ${total} €
-</div>
-
-`;
-
-contenu.innerHTML=html;
-
 }
 
-function supprimerDuPanier(index){
-
-panier.splice(index,1);
-
+function supprimer(){
+panier=[];
 afficherPanier();
-
-mettreAJourBouton();
-
+majBouton();
 }
 
 function filtrer(categorie,bouton){
-
-document
-.querySelectorAll('.categories button')
-.forEach(function(btn){
-
-btn.classList.remove('active');
-
+document.querySelectorAll('.categorie').forEach(b=>{
+b.classList.remove('active');
 });
-
 bouton.classList.add('active');
 
-const produits =
-document.querySelectorAll('.produit');
-
-produits.forEach(
-function(produit){
-
-const categories =
-produit.dataset.category;
-
-if(
-categorie==="Tout" ||
-categories.includes(categorie)
-){
-
-produit.style.display="";
-
-}else{
-
-produit.style.display="none";
-
-}
-
+let nombre=0;
+document.querySelectorAll('.produit').forEach(p=>{
+let visible=categorie==='Tout'||
+p.dataset.category.includes(categorie);
+p.style.display=visible?'block':'none';
+if(visible)nombre++;
 });
 
+document.getElementById('aucun').style.display=
+nombre?'none':'block';
 }
 
 function rechercher(){
+let mot=document.getElementById('recherche')
+.value.toLowerCase();
+let nombre=0;
 
-const recherche =
-document
-.getElementById("recherche")
-.value
-.toLowerCase();
-
-const produits =
-document.querySelectorAll('.produit');
-
-produits.forEach(
-function(produit){
-
-const nom =
-produit.dataset.name
-.toLowerCase();
-
-if(nom.includes(recherche)){
-
-produit.style.display="";
-
-}else{
-
-produit.style.display="none";
-
-}
-
+document.querySelectorAll('.produit').forEach(p=>{
+let visible=p.dataset.name.toLowerCase().includes(mot);
+p.style.display=visible?'block':'none';
+if(visible)nombre++;
 });
 
+document.getElementById('aucun').style.display=
+nombre?'none':'block';
 }
 
-/* INSTALLATION DE DADA SHOP COMME APPLICATION */
-
-if ("serviceWorker" in navigator) {
-
-window.addEventListener("load", function() {
-
-navigator.serviceWorker.register("./sw.js");
-
+if('serviceWorker' in navigator){
+window.addEventListener('load',()=>{
+navigator.serviceWorker.register('./sw.js');
 });
-
 }
-
 </script>
 
 </body>
 </html>
+
