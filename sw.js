@@ -1,4 +1,4 @@
-const CACHE_NAME = "dada-shop-v1";
+const CACHE_NAME = "dada-shop-v2";
 
 const FILES_TO_CACHE = [
 "./",
@@ -22,3 +22,4 @@ return response || fetch(event.request);
 })
 );
 });
+
